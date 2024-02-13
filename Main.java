@@ -1,6 +1,31 @@
+// import java.util.Scanner;
+
 public class Main {
+    
+
+    // public static void main(String[] args) {
+    //     boolean question_1 = question7(6, 12, 72);
+    //     System.out.println(question_1);
+    // }
+
+    // public static Scanner scanner = new Scanner(System.in);
 
     public char question1(double score1, double score2, double score3) {
+
+        final int NUMBER_OF_SCORES = 3;
+        char grade;
+
+        int avg = (int)(score1 + score2 + score3) / NUMBER_OF_SCORES;
+        if (avg >= 90 && avg <=100)
+            grade = 'A';
+        else if (avg >= 80 && avg <= 89)
+            grade = 'B';
+        else if (avg >= 70 && avg <=79)
+            grade = 'C';
+        else if (avg >= 60 && avg <= 69)      
+            grade = 'D';
+        else 
+            grade = 'F';
         // Based on three scores that the user inputs, display the average of the scores
         // and the letter grade that is assigned fort he test score average. The grading
         // scheme is as follows:
@@ -11,7 +36,7 @@ public class Main {
         // 60 - 69 D
         // <60 F
 
-        return 'F'; // you need to change this line
+        return grade; // you need to change this line
     }
 
     public boolean question2(boolean isMorning, boolean isMom, boolean isAsleep) {
@@ -19,8 +44,19 @@ public class Main {
         // should answer it. Normally you answer, except in the morning you only answer
         // if it is your mom calling. In all cases, if you are asleep, you do not
         // answer.
+        
+        boolean answer = true;
 
-        return false; // Hello? Text please!
+        if (isAsleep == true)
+            answer = false;
+        else if (isMorning == true && isMom == true)
+            answer = true;
+        else if (isMorning == true)
+            answer = false;
+        else 
+            answer = true;
+        
+        return answer; // Hello? Text please!
                       // you do need to change the return line though
     }
 
@@ -32,8 +68,33 @@ public class Main {
 
         // dayOfWeek(1) -> "Sunday"
         // dayOfWeek(4) -> "Wednesday"
-
-        return "Invalid"; // you need to change this line
+        String weekDay;
+        switch (dayNum) {
+            case 1:
+                weekDay = "Sunday";
+                break;
+            case 2:
+                weekDay = "Monday";
+                break;
+            case 3:
+                weekDay = "Tuesday";
+                break;
+            case 4:
+                weekDay = "Wednesday";
+                break;
+            case 5:
+                weekDay = "Thursday";
+                break;
+            case 6:
+                weekDay = "Friday";
+                break;
+            case 7:
+                weekDay = "Saturday";
+                break;
+            default:
+                weekDay = "Invalid";
+        }
+        return weekDay; // you need to change this line
     }
 
     public int question4(int tea, int candy) {
@@ -43,8 +104,15 @@ public class Main {
         // and candy are at least 5. However, if either tea or candy is at least double
         // the amount of the other one, the party is great (2). However, in all cases,
         // if either tea or candy is less than 5, the party is always bad (0).
+        int outcome = 0;
+        if (tea < 5 || candy < 5)
+            outcome = 0;
+        else if (tea >= candy * 2 || candy >= tea * 2)
+            outcome = 2;
+        else if (tea >= 5 && candy >=5)
+            outcome = 1;
 
-        return 0; // you need to change this line
+        return outcome; // you need to change this line
     }
 
     public boolean question5(int a, int b, int c, boolean bOk) {
@@ -52,10 +120,28 @@ public class Main {
         // ints, a, b, and c, return true if b is greater than a, and c is greater than
         // b. However, with the exception that if bOk is true, b does not need to be
         // greater than a.
+        boolean answer = true;
+
+        if (b > a && c > b)
+            answer = true;
+        else
+            answer = false;
+
+        while (bOk == true)
+            if (c > b) {
+                answer = true;
+                break;
+            }
+            else {
+                answer = false;
+                break;
+            }
+        
+                
 
         // Note 'bOk' is the name of an formal parameter.
 
-        return false; // you need to change this line
+        return answer; // you need to change this line
     }
 
     public boolean question6(int n, boolean outsideMode) {
@@ -63,8 +149,24 @@ public class Main {
         // n, return true if n is in the range 1..10, inclusive. Unless "outsideMode" is
         // true, in which case return true if the number is less or equal to 1, or
         // greater or equal to 10.
+        boolean answer = true;
+        
+        if (n >=1 && n <= 10)
+            answer = true;
+        else
+            answer = false;
 
-        return false; // you will need to change this line
+        while (outsideMode == true)
+            if (n <=1 || n >= 10){
+                answer = true;
+                break;
+            }
+            else {
+                answer = false;
+                break;
+            }
+
+        return answer; // you will need to change this line
     }
 
     public boolean question7(int date, int month, int year) {
@@ -79,6 +181,26 @@ public class Main {
         // magicDate(6, 10, 60) -> true
         // magicDate(50, 12, 600) -> false
 
-        return false; // you will need to change this line
+        boolean answer = true;
+        int validate;
+
+        if (date >= 1 && date <= 31 && month >=1 && month <= 12) 
+            validate = 1;
+        else  
+            validate = 0;
+        System.out.println(validate);
+        
+        switch (validate) {
+            case 1:
+                if (month * date == year)
+                    answer = true;
+                else 
+                    answer = false;
+                break;
+            default:
+                answer = false;
+                break;
+        }
+        return answer; // you will need to change this line
     }
 }

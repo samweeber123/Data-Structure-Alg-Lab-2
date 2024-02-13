@@ -1,0 +1,15 @@
+{
+  "java.project.sourcePaths": [
+    "./src/",
+    "./test/",
+    "./"
+  ],
+  "java.project.outputPath": "./target/",
+  "java.project.referencedLibraries": [
+    "./lib/*.jar"
+  ],
+  "workspaceKeybindings.ummTasksKeys.enabled": true,
+  "ummBinaryPath": "/Users/dhruvdh/.cargo/bin/umm",
+  "editor.wordWrap": "on",
+  "editor.minimap.enabled": false
+}
