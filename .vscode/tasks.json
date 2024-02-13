@@ -1,0 +1,250 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Set umm to be executable",
+      "type": "shell",
+      "command": "chmod",
+      "args": [
+        {
+          "value": "+x",
+          "quoting": "escape"
+        },
+        {
+          "value": "${config:ummBinaryPath}",
+          "quoting": "weak"
+        }
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Clean library and target folders",
+      "type": "shell",
+      "command": "${config:ummBinaryPath}",
+      "args": [
+        {
+          "value": "clean",
+          "quoting": "escape"
+        }
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Reset project metadata",
+      "type": "shell",
+      "command": "${config:ummBinaryPath}",
+      "args": [
+        {
+          "value": "reset",
+          "quoting": "escape"
+        }
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Check health of the project",
+      "type": "shell",
+      "command": "${config:ummBinaryPath}",
+      "args": [
+        {
+          "value": "check-health",
+          "quoting": "escape"
+        }
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Update umm executable",
+      "type": "shell",
+      "command": "${config:ummBinaryPath}",
+      "args": [
+        {
+          "value": "update",
+          "quoting": "escape"
+        }
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Run tests for ProgrammingPractice1Test",
+      "type": "shell",
+      "command": "${config:ummBinaryPath}",
+      "group": "test",
+      "args": [
+        {
+          "value": "test",
+          "quoting": "escape"
+        },
+        {
+          "value": "ProgrammingPractice1Test",
+          "quoting": "escape"
+        }
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Run specific test from ProgrammingPractice1Test",
+      "type": "shell",
+      "command": "${config:ummBinaryPath}",
+      "group": "test",
+      "args": [
+        {
+          "value": "test",
+          "quoting": "escape"
+        },
+        {
+          "value": "ProgrammingPractice1Test",
+          "quoting": "escape"
+        },
+        {
+          "value": "${input:ProgrammingPractice1Test}",
+          "quoting": "escape"
+        }
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Check ProgrammingPractice1Test",
+      "type": "shell",
+      "command": "${config:ummBinaryPath}",
+      "args": [
+        {
+          "value": "check",
+          "quoting": "escape"
+        },
+        {
+          "value": "ProgrammingPractice1Test",
+          "quoting": "escape"
+        }
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Check JavaDoc for ProgrammingPractice1Test",
+      "type": "shell",
+      "command": "${config:ummBinaryPath}",
+      "args": [
+        {
+          "value": "doc-check",
+          "quoting": "escape"
+        },
+        {
+          "value": "ProgrammingPractice1Test",
+          "quoting": "escape"
+        }
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Run Main",
+      "type": "shell",
+      "command": "${config:ummBinaryPath}",
+      "args": [
+        {
+          "value": "run",
+          "quoting": "escape"
+        },
+        {
+          "value": "Main",
+          "quoting": "escape"
+        }
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Check Main",
+      "type": "shell",
+      "command": "${config:ummBinaryPath}",
+      "args": [
+        {
+          "value": "check",
+          "quoting": "escape"
+        },
+        {
+          "value": "Main",
+          "quoting": "escape"
+        }
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Check JavaDoc for Main",
+      "type": "shell",
+      "command": "${config:ummBinaryPath}",
+      "args": [
+        {
+          "value": "doc-check",
+          "quoting": "escape"
+        },
+        {
+          "value": "Main",
+          "quoting": "escape"
+        }
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Grade Assignment",
+      "type": "shell",
+      "command": "${config:ummBinaryPath}",
+      "args": [
+        {
+          "value": "grade",
+          "quoting": "escape"
+        },
+        {
+          "value": "${input:gradable_assignments}",
+          "quoting": "escape"
+        }
+      ],
+      "problemMatcher": [
+        {
+          "applyTo": "allDocuments",
+          "fileLocation": [
+            "relative",
+            "${workspaceFolder}"
+          ],
+          "owner": "umm",
+          "pattern": {
+            "endLine": 2,
+            "file": 1,
+            "line": 2,
+            "message": 3,
+            "regexp": "\\s*[│]\\s*([\\w./]+)\\s*[│]\\s*([0-9]+)\\s*[│]\\s*([\\w ]+)"
+          }
+        }
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "type": "pickString",
+      "id": "ProgrammingPractice1Test",
+      "description": "Which test to run?",
+      "options": [
+        "testPart0",
+        "testPart1",
+        "testPart2",
+        "testPart3",
+        "testPart4",
+        "testPart5",
+        "testPart6",
+        "testPart7",
+        "testPart8",
+        "testPart9",
+        "testPart10",
+        "testPart11"
+      ],
+      "default": "testPart0"
+    },
+    {
+      "type": "pickString",
+      "id": "gradable_assignments",
+      "description": "What script to use?",
+      "options": [
+        "script.rhai"
+      ],
+      "default": "script.rhai"
+    }
+  ]
+}
